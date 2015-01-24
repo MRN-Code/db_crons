@@ -24,6 +24,13 @@ host    all         all         127.0.0.1/32          ident
 
 ```
 
+### Debug mode
+By default, all output is sent to the system logs (`/var/log/messages`).
+It is also possible to direct output to stdout instead of to the system logs by typing `debug` after run.sh:
+```
+php run.sh debug
+```
+
 ## Cron
 The run.php script is designed to be run by a cron. Currently the script can be run once per hour.
 It takes less than three minutes for the script to complete.
