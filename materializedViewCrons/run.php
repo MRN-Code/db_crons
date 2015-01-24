@@ -17,6 +17,7 @@ if (in_array('debug', $argv)) {
 }
 // Constants
 DEFINE('ADMIN_EMAIL', 'nidev@mrn.org,dwood@mrn.org,dlandis@mrn.org');
+//DEFINE('ADMIN_EMAIL', 'dwood@mrn.org');
 DEFINE('LOCK_KEY', 'materializedViewCron');
 
 
@@ -126,7 +127,7 @@ function sendEmail ($subject, $body) {
  * Returns an absolute path
  */
 function resolveRelativePath($path) {
-    return realpath(dirname(__FILE__) . '/' . $path);
+    return realpath(dirname(__FILE__)) . '/' . $path;
 }
 
 /**
