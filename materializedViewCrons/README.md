@@ -2,7 +2,7 @@
 
 ## Requirements
 
-1. psql (yum install psql)
+1. psql
 2. php-cli (yum install php-cli)
 
 ## Running
