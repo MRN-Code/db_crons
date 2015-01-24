@@ -16,7 +16,7 @@ if (in_array('debug', $argv)) {
     ini_set('error_log', ''); //send errors to syslog (/var/log/messages);
 }
 // Constants
-DEFINE('ADMIN_EMAIL', 'nidev@mrn.org');
+DEFINE('ADMIN_EMAIL', 'dwood@mrn.org');
 DEFINE('LOCK_KEY', 'materializedViewCron');
 
 
