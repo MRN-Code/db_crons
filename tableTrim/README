@@ -1,0 +1,6 @@
+# TableTrim
+Scripts to remove temporary data from tables that would otherwise grow too large.
+
+# Usage
+Make sure that the files in this directory are executable by the postgres user.
+Copy the coinsTableTrim file to /etc/cron.d/

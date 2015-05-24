@@ -1,0 +1,14 @@
+# Place this file in /etc/cron.d/
+0 21  *  *  *  sudo -u postgres /coins/db_crons/nipgsql/run_stats.sh
+# Commenting out for now: coinsmon does not run on the new systems yet
+#*/5 * *  *  *  sudo -u postgres /coins/db_crons/coinsmon/coinsmon.sh
+*/5 * *  *  *  sudo -u postgres /coins/db_crons/permissions/login_permissions/permissions_driver.sh
+*/5 * *  *  *  sudo -u postgres /coins/db_crons/permissions/sec_definers/definer_driver.sh
+0  *  *  *  *  sudo -u postgres /coins/db_crons/materializedViewCrons/dataExchange/updateOptionsCron.sh
+0  *  *  *  *  sudo -u postgres /coins/db_crons/materializedViewCrons/updateCoinsMetrics.sh
+*/5 * *  *  *  sudo -u postgres /coins/db_crons/DxMonitor/checkErrorLog/checkForDxErrors.sh
+0  2  1  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_client_assessment_backup.sh
+0  2  2  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_data_sort_temp.sh
+0  2  3  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_pivot_categories_temp.sh
+0  2  4  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_client_error_log.sh
+0  2  5  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_assessment_responses_hist.sh

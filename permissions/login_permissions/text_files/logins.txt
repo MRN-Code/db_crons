@@ -1,0 +1,1 @@
+logins:     PUBLIC   cas_app   login_app   micis_app   nif_user    p2_app     portal_app

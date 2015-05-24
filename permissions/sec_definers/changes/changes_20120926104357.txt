@@ -1,0 +1,21 @@
+Wed Sep 26 10:43:57 MDT 2012
+
+This cronjob is running from niprddb /var/lib/pgsql/permissions/sec_definers
+Hint: to make a function have security_type DEFINER... see this example:
+ALTER FUNCTION mrsdba.mrs_add_dx_data_request_f(text, numeric) SECURITY DEFINER
+
+PREVIOUS Function/Definer Numbers
+TEST
+Schemas:	Total_functions		#_of_security_definers
+mrsdba:			328		328
+casdba:			31		31
+public:			56		2
+
+NEW Function/Definer Numbers
+Schemas:	Total_functions		#_of_security_definers
+mrsdba:			328		328
+casdba:			31		31
+public:			56		2
+
+
+Wed Sep 26 10:43:57 MDT 2012

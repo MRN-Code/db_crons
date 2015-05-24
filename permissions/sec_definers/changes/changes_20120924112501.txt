@@ -1,0 +1,20 @@
+Mon Sep 24 11:25:01 MDT 2012
+
+Different
+
+Previous Function/Definer Numbers
+TEST
+Schemas:	Total_functions		#_of_security_definers
+mrsdba:			328		328
+casdba:			31		31
+public:			56		2
+
+New Function/Definer Numbers
+Schemas:	Total_functions		#_of_security_definers
+mrsdba:			328		328
+casdba:			31		31
+public:			56		2
+
+finished
+
+Mon Sep 24 11:25:01 MDT 2012

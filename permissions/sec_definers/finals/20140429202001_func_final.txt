@@ -1,0 +1,4 @@
+Schemas:	Total_functions		#_of_security_definers
+mrsdba:			372		366
+casdba:			34		34
+public:			66		2

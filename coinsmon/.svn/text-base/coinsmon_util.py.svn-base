@@ -1,0 +1,38 @@
+from __future__ import division
+import os
+def freespace(path):
+    # retrieves information for the harddrive where root is mounted
+    # in windows replace this with "C:\" or the relevant drive letter
+    disk = os.statvfs(path)
+
+    # Information is recieved in numbers of blocks free
+    # so we need to multiply by the block size to get the space free in bytes
+    capacity = disk.f_bsize * disk.f_blocks
+    available = disk.f_bsize * disk.f_bavail
+    used = disk.f_bsize * (disk.f_blocks - disk.f_bavail)
+
+    # print information in bytes
+    #print used, available, capacity
+
+    # print information in Kilobytes
+    #print used/1024, available/1024, capacity/1024
+
+    # print information in Megabytes
+    #print used/1.048576e6, available/1.048576e6, capacity/1.048576e6
+
+    # print information in Gigabytes
+    #print used/1.073741824e9, available/1.073741824e9, capacity/1.073741824e9
+    pcnt=(available/capacity)*100
+    #print available, capacity
+    #print(str(pcnt))
+    return (pcnt)
+
+def mail(message,to):
+  SENDMAIL = "mail" # sendmail location
+  p = os.popen("mail -s 'WARNING' "+to, "w")
+  p.write(message + "\n")
+  p.write(".\n")
+  p.write("\n")
+  sts = p.close()
+  if sts != 0:
+      print "Sendmail exit status", sts
