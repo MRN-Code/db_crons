@@ -1,12 +1,12 @@
 #!/bin/sh
-cd /var/lib/pgsql/permissions/login_permissions
+cd /coins/db_crons/permissions/login_permissions
 TODAY=`date`
 HOSTNAME=`hostname`;
 TEMP_DIR="tmp.txt"
 DB="coins"
 
 echo "this script is run by user postgres on $HOSTNAME as a cronjob"
-echo "/var/lib/pgsql/permissions/login_permissions/permissions_driver.sh"
+echo "/coins/db_crons/permissions/login_permissions/permissions_driver.sh"
 echo ""
 
 # set this to where you want results mailed
