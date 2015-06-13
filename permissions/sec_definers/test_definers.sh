@@ -1,13 +1,13 @@
 #!/bin/sh
 
-cd /var/lib/pgsql/permissions/sec_definers
+cd /coins/db_crons/permissions/sec_definers
 TODAY=`date`
 HOSTNAME=`hostname`
 DB="coins"
 echo $TODAY 
 echo ""
 
-echo "This cronjob is running from $HOSTNAME /var/lib/pgsql/permissions/sec_definers"
+echo "This cronjob is running from $HOSTNAME db_crons/permissions/sec_definers"
 echo ""
 echo "Hint: to make a function have security_type DEFINER... see these examples:"
 echo "During function creation: LANGUAGE plpgsql VOLATILE SECURITY DEFINER"

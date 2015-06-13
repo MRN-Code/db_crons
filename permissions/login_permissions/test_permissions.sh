@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /var/lib/pgsql/permissions/login_permissions
+cd /coins/db_crons/permissions/login_permissions
 TODAY=`date`
 HOSTNAME=`hostname`;
 echo $TODAY 
@@ -9,10 +9,10 @@ DB="coins"
 
 # Set DB and server names based on which server the file is located
 
-echo "A prettier version of this email can be seen on $HOSTAME at /var/log/pgsql/permissions/login_permissions/changes"
+echo "A prettier version of this email can be seen on $HOSTAME at db_crons/permissions/login_permissions/changes"
 echo ""
 #echo "This file is to be used for testing permissions"
-echo "This is a cron job running on $HOSTNAME at /var/lib/pgsql/permissions/login_permissions/test_permissions.sh"
+echo "This is a cron job running on $HOSTNAME at db_crons/permissions/login_permissions/test_permissions.sh"
 #echo "The script is actually run by permissions_driver.sh"
 #echo ""
 

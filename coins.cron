@@ -12,7 +12,7 @@
 0  *  *  *  *  sudo -u postgres /coins/db_crons/materializedViewCrons/updateCoinsMetrics.sh
 */5 * *  *  *  sudo -u postgres /coins/db_crons/DxMonitor/checkErrorLog/checkForDxErrors.sh
 0  2  1  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_client_assessment_backup.sh
-0  2  2  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_data_sort_temp.sh
-0  2  3  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_pivot_categories_temp.sh
+0  20  *  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_data_sort_temp.sh
+0  20  *  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_pivot_categories_temp.sh
 0  2  4  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_client_error_log.sh
 0  2  5  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_assessment_responses_hist.sh

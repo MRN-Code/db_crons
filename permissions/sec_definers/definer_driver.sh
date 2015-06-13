@@ -1,18 +1,19 @@
 #!/bin/sh
-cd /var/lib/pgsql/permissions/sec_definers
+cd /coins/db_crons/permissions/sec_definers
 TODAY=`date`
 HOSTNAME=`hostname`;
 TEMP_DIR="tmp.txt"
 DB="coins"
-fi
+FROM="coins-notifier@mrn.org"
+MAIL_DIR="/tmp/security_definer_msg.txt"
 
 echo "this script is run by user postgres on $HOSTNAME as a cronjob"
-echo "/var/lib/pgsql/permissions/sec_definers/definer_driver.sh"
+echo "db_crons/permissions/sec_definers/definer_driver.sh"
 echo ""
 
 # set this to where you want results mailed
-ADMINS=dlandis@mrn.org,dwood@mrn.org,rwang@mrn.org,rkelly@mrn.org,cdieringer@mrn.org
-#ADMINS=dlandis@mrn.org
+ADMINS=`cat /coins/db_crons/admin_emails`
+#ADMINS=dwood@mrn.org
 
 # cp PREVIOUS final.txt file to permissions directory for comparison purposes
 cd finals
@@ -45,7 +46,13 @@ chmod 755 $TEMP_DIR
 SUBJECT="Number of Functions/Security Definers Changed on $HOSTNAME $DB - "${TODAY}
 if test "$MAIL_IT" = "Y"
 then
-	/bin/mail -s "$SUBJECT" $ADMINS <$TEMP_DIR
+    echo "To: "$ADMINS > $MAIL_DIR
+    echo "From: "$FROM >> $MAIL_DIR
+    echo "Subject: "$SUBJECT >> $MAIL_DIR
+    echo "" >> $MAIL_DIR
+    echo "" >> $MAIL_DIR
+    cat $TEMP_DIR >> $MAIL_DIR
+    ssmtp $ADMINS < $MAIL_DIR
 fi
 
 rm tmp.txt prev_final.driver.txt new_final.driver.txt
