@@ -17,7 +17,7 @@ DBNAME="coins"
 
 # First, disconnect all connections
 echo 'Terminating connections to DB'
-psql -d $DBNAME -c "SELECT pg_terminate_backend(procpid) FROM pg_stat_activity WHERE procpid <> pg_backend_pid() AND datname = '$DBNAME';"
+psql -d $DBNAME -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE pid <> pg_backend_pid() AND datname = '$DBNAME';"
 
 # Drop DB
 echo 'Dropping DB'
