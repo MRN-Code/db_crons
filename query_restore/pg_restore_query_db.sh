@@ -19,6 +19,10 @@ DBPORT=6117
 echo 'Creating empty DB'
 createdb -p $DBPORT ${DBNAME}_temp
 
+# Create lang
+echo 'create plpgsql lang'
+psql -p $DBPORT -d ${DBNAME}_temp -c 'CREATE LANGUAGE plpgsql'
+
 # Restore DB
 echo 'restoring db from latest dump'
 psql -p $DBPORT -d ${DBNAME}_temp -f $ARCHIVE_FILE
@@ -27,8 +31,8 @@ psql -p $DBPORT -d ${DBNAME}_temp -f $ARCHIVE_FILE
 echo 'Setting default search path'
 psql -p $DBPORT -d ${DBNAME}_temp -c "ALTER DATABASE ${DBNAME}_temp SET search_path=mrsdba, casdba, public;"
 
-# VACUUM ANALYZE THE DB
-echo 'VACUUM ANALYZE'
+# LOAD tablefunc extension
+echo 'Load tablefunc extension'
 psql -p $DBPORT -d ${DBNAME}_temp -f /usr/share/pgsql/contrib/tablefunc.sql
 
 # VACUUM ANALYZE THE DB
