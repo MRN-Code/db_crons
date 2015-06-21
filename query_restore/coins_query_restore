@@ -1,0 +1,1 @@
+0  0  *  *  *  sudo -u postgres /coins/db_crons/query_restore/pg_restore_query_db.sh

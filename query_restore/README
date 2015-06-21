@@ -1,0 +1,3 @@
+#PG Restore COINS DB
+These scripts will restore a database named `postgres` on the current host from the latest backup of production.
+Place the coins_query_restore script in /etc/cron.d/ to run the restore daily.
