@@ -1,1 +1,1 @@
-30 23 * * * sudo -u postgres pg_dump -vFp -p 6117 postgres -f /coins/mnt/ni/prodrepdbcoin.sql
+05 14 * * * postgres pg_dump -vFp -p 6117 -T 'mrsdba.mrs_series_data' -T '*_hist'  -T mrsdba.mrs_series  -T mrsdba.mrs_analysis_files -T mrsdba.mrs_assessment_events -T mrsdba.mrs_asmt_resp_hist_new -n 'mrsdba' postgres > '/coins/mnt/ni/prodrepdbcoin.sql' 
