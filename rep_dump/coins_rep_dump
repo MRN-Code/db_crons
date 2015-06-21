@@ -1,0 +1,1 @@
+30 23 * * * sudo -u postgres pg_dump -vFp -p 6117 postgres -f /coins/mnt/ni/prodrepdbcoin.sql
