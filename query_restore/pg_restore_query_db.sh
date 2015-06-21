@@ -31,8 +31,16 @@ psql -p $DBPORT -d ${DBNAME}_temp -f $ARCHIVE_FILE
 echo 'Setting default search path'
 psql -p $DBPORT -d ${DBNAME}_temp -c "ALTER DATABASE ${DBNAME}_temp SET search_path=mrsdba, casdba, public;"
 
-# LOAD tablefunc extension
-echo 'Load tablefunc extension'
+# Truncate qb temp tables
+echo 'Truncating QB temp tables'
+psql -p $DBPORT -d ${DBNAME}_temp -c "TRUNCATE TABLE mrsdba.mrs_qb_asmt_data_sort_temp; TRUNCATE TABLE mrsdba.mrs_qb_asmt_pivot_categories_temp;"
+
+# Add empty schemas
+echo 'Adding casdba, dxdba and dtdba'
+psql -p $DBPORT -d ${DBNAME}_temp -c "CREATE schema casdba; CREATE schema dxdba; CREATE schema dtdba;"
+
+# Create tablefunc extension
+echo 'Create tablefunc extension'
 psql -p $DBPORT -d ${DBNAME}_temp -f /usr/share/pgsql/contrib/tablefunc.sql
 
 # VACUUM ANALYZE THE DB
@@ -43,7 +51,7 @@ psql -p $DBPORT -d ${DBNAME}_temp -c "VACUUM ANALYZE"
 
 # First, disconnect all connections
 echo 'Terminating connections to DB'
-psql -d $DBNAME -p $DBPORT -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE pid <> pg_backend_pid() AND datname = '$DBNAME';"
+psql -d $DBNAME -p $DBPORT -c "SELECT pg_terminate_backend(procpid) FROM pg_stat_activity WHERE procpid <> pg_backend_pid() AND datname = '$DBNAME';"
 
 # Drop DB
 echo 'Dropping DB'
@@ -51,7 +59,7 @@ dropdb -p $DBPORT $DBNAME
 
 # Rename temp DB
 echo 'Renaming temp database'
-psql -d $DBNAME -p $DBPORT -c "ALTER DATABASE ${DBNAME}_temp RENAME TO ${DBNAME};"
+psql -d habaridb -p $DBPORT -c "ALTER DATABASE ${DBNAME}_temp RENAME TO ${DBNAME};"
 
 echo 'Finished with COINS DB refresh'
 echo `date`
