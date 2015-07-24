@@ -1,1 +1,2 @@
 30 1 * * * postgres pg_dump -Fc -p 6117 -f '/coins/mnt/ni/nightly_pg_dumps/prodrepdbcoin.dump' postgres
+
