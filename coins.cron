@@ -3,16 +3,16 @@
 # Commenting out because this no longer works. The columns in mrs_stats_system need to be updated to accept larger numbers
 #psql:/coins/db_crons/stats/run_stats.sql:20: ERROR:  numeric field overflow
 #DETAIL:  A field with precision 6, scale 0 must round to an absolute value less than 10^6.
-#0 21  *  *  *  sudo -u postgres /coins/db_crons/stats/run_stats.sh
+#0 21  *  *  *   postgres /coins/db_crons/stats/run_stats.sh > /coins/db_crons/logs/run_stats 2>&1
 # Commenting out for now: coinsmon does not run on the new systems yet
-#*/5 * *  *  *  sudo -u postgres /coins/db_crons/coinsmon/coinsmon.sh
-*/5 * *  *  *  sudo -u postgres /coins/db_crons/permissions/login_permissions/permissions_driver.sh
-*/5 * *  *  *  sudo -u postgres /coins/db_crons/permissions/sec_definers/definer_driver.sh
-0  *  *  *  *  sudo -u postgres /coins/db_crons/materializedViewCrons/dataExchange/updateOptionsCron.sh
-0  *  *  *  *  sudo -u postgres /coins/db_crons/materializedViewCrons/updateCoinsMetrics.sh
-*/5 * *  *  *  sudo -u postgres /coins/db_crons/DxMonitor/checkErrorLog/checkForDxErrors.sh
-0  2  1  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_client_assessment_backup.sh
-0  20  *  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_data_sort_temp.sh
-0  20  *  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_qb_asmt_pivot_categories_temp.sh
-0  2  4  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_client_error_log.sh
-0  2  5  *  *  sudo -u postgres /coins/db_crons/tableTrim/mrs_assessment_responses_hist.sh
+#*/5 * *  *  *   postgres /coins/db_crons/coinsmon/coinsmon.sh
+*/5 * *  *  *   postgres /coins/db_crons/permissions/login_permissions/permissions_driver.sh > /coins/db_crons/logs/permissions_driver 2>&1
+*/5 * *  *  *   postgres /coins/db_crons/permissions/sec_definers/definer_driver.sh > /coins/db_crons/logs/definer_driver 2>&1
+0  *  *  *  *   postgres /coins/db_crons/materializedViewCrons/dataExchange/updateOptionsCron.sh > /coins/db_crons/logs/updateOptionsCron 2>&1
+0  *  *  *  *   postgres /coins/db_crons/materializedViewCrons/updateCoinsMetrics.sh > /coins/db_crons/logs/updateCoinsMetrics 2>&1
+*/5 * *  *  *   postgres /coins/db_crons/DxMonitor/checkErrorLog/checkForDxErrors.sh > /coins/db_crons/logs/checkForDxErrors 2>&1
+0  2  1  *  *   postgres /coins/db_crons/tableTrim/mrs_client_assessment_backup.sh > /coins/db_crons/logs/trim_mrs_client_assessment_backup 2>&1
+0  20  *  *  *   postgres /coins/db_crons/tableTrim/mrs_qb_asmt_data_sort_temp.sh > /coins/db_crons/logs/trim_mrs_qb_asmt_data_sort_temp 2>&1
+0  20  *  *  *   postgres /coins/db_crons/tableTrim/mrs_qb_asmt_pivot_categories_temp.sh > /coins/db_crons/logs/trim_mrs_qb_asmt_pivot_categories_temp 2>&1
+0  2  4  *  *   postgres /coins/db_crons/tableTrim/mrs_client_error_log.sh > /coins/db_crons/logs/trim_mrs_client_error_log 2>&1
+0  2  5  *  *   postgres /coins/db_crons/tableTrim/mrs_assessment_responses_hist.sh > /coins/db_crons/logs/trim_mrs_assessment_responses_hist 2>&1
